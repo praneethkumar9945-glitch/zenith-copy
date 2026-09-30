@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { GraduationCap, LogOut } from "lucide-react";
-import { menus, roleLabels } from "@/components/college-portal/config/menus";
+import { menus } from "@/components/college-portal/config/menus";
 import { DashboardRouter } from "@/components/college-portal/pages/DashboardRouter";
-import { StoreProvider, useStore } from "@/components/college-portal/store/StoreContext";
+import { roleLabels, StoreProvider, useStore } from "@/components/college-portal/store/StoreContext";
 import type { Role } from "@/components/college-portal/data/types";
 
 export const Route = createFileRoute("/_app/college")({
