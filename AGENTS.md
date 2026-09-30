@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Project architecture
+- Keep the College Management Portal modules isolated under `src/components/college-portal/` and expose them through `/college`; this preserves their independent role-based state and avoids coupling them to Zenith HR state.

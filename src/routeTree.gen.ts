@@ -19,6 +19,7 @@ import { Route as AppHrRouteImport } from './routes/_app.hr'
 import { Route as AppFeesRouteImport } from './routes/_app.fees'
 import { Route as AppExamsRouteImport } from './routes/_app.exams'
 import { Route as AppCrmRouteImport } from './routes/_app.crm'
+import { Route as AppCollegeRouteImport } from './routes/_app.college'
 import { Route as AppAiRouteImport } from './routes/_app.ai'
 import { Route as AppAdmissionRouteImport } from './routes/_app.admission'
 import { Route as AppAcademicRouteImport } from './routes/_app.academic'
@@ -96,6 +97,11 @@ const AppExamsRoute = AppExamsRouteImport.update({
 const AppCrmRoute = AppCrmRouteImport.update({
   id: '/crm',
   path: '/crm',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCollegeRoute = AppCollegeRouteImport.update({
+  id: '/college',
+  path: '/college',
   getParentRoute: () => AppRoute,
 } as any)
 const AppAiRoute = AppAiRouteImport.update({
@@ -250,6 +256,7 @@ export interface FileRoutesByFullPath {
   '/academic': typeof AppAcademicRouteWithChildren
   '/admission': typeof AppAdmissionRouteWithChildren
   '/ai': typeof AppAiRoute
+  '/college': typeof AppCollegeRoute
   '/crm': typeof AppCrmRoute
   '/exams': typeof AppExamsRoute
   '/fees': typeof AppFeesRoute
@@ -287,6 +294,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/ai': typeof AppAiRoute
+  '/college': typeof AppCollegeRoute
   '/crm': typeof AppCrmRoute
   '/exams': typeof AppExamsRoute
   '/fees': typeof AppFeesRoute
@@ -326,6 +334,7 @@ export interface FileRoutesById {
   '/_app/academic': typeof AppAcademicRouteWithChildren
   '/_app/admission': typeof AppAdmissionRouteWithChildren
   '/_app/ai': typeof AppAiRoute
+  '/_app/college': typeof AppCollegeRoute
   '/_app/crm': typeof AppCrmRoute
   '/_app/exams': typeof AppExamsRoute
   '/_app/fees': typeof AppFeesRoute
@@ -369,6 +378,7 @@ export interface FileRouteTypes {
     | '/academic'
     | '/admission'
     | '/ai'
+    | '/college'
     | '/crm'
     | '/exams'
     | '/fees'
@@ -406,6 +416,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/ai'
+    | '/college'
     | '/crm'
     | '/exams'
     | '/fees'
@@ -444,6 +455,7 @@ export interface FileRouteTypes {
     | '/_app/academic'
     | '/_app/admission'
     | '/_app/ai'
+    | '/_app/college'
     | '/_app/crm'
     | '/_app/exams'
     | '/_app/fees'
@@ -555,6 +567,13 @@ declare module '@tanstack/react-router' {
       path: '/crm'
       fullPath: '/crm'
       preLoaderRoute: typeof AppCrmRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/college': {
+      id: '/_app/college'
+      path: '/college'
+      fullPath: '/college'
+      preLoaderRoute: typeof AppCollegeRouteImport
       parentRoute: typeof AppRoute
     }
     '/_app/ai': {
@@ -867,6 +886,7 @@ interface AppRouteChildren {
   AppAcademicRoute: typeof AppAcademicRouteWithChildren
   AppAdmissionRoute: typeof AppAdmissionRouteWithChildren
   AppAiRoute: typeof AppAiRoute
+  AppCollegeRoute: typeof AppCollegeRoute
   AppCrmRoute: typeof AppCrmRoute
   AppExamsRoute: typeof AppExamsRoute
   AppFeesRoute: typeof AppFeesRoute
@@ -882,6 +902,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppAcademicRoute: AppAcademicRouteWithChildren,
   AppAdmissionRoute: AppAdmissionRouteWithChildren,
   AppAiRoute: AppAiRoute,
+  AppCollegeRoute: AppCollegeRoute,
   AppCrmRoute: AppCrmRoute,
   AppExamsRoute: AppExamsRoute,
   AppFeesRoute: AppFeesRoute,
@@ -901,3 +922,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
