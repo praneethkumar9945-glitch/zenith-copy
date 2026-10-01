@@ -11,3 +11,4 @@
 
 ## Project architecture
 - Keep the College Management Portal modules isolated under `src/components/college-portal/` and expose them through `/college`; this preserves their independent role-based state and avoids coupling them to Zenith HR state.
+- Keep the Governing Body & Executive Management modules isolated under `src/components/governance/` and expose them through `/governance`; this keeps their leadership state separate while sharing Zenith's application shell.
