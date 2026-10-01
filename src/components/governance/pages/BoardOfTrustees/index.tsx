@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ReactElement, useState } from 'react';
 import {
   LayoutDashboard, FileText, DollarSign, Users, UserCheck,
   BarChart3, BookOpen, Building2, ChevronRight
@@ -20,7 +20,7 @@ const NAV_ITEMS = [
   { id: 'performance', label: 'Institutional Performance', icon: <BarChart3 className="w-4 h-4" /> },
 ];
 
-const PAGES: Record<string, JSX.Element> = {
+const PAGES: Record<string, ReactElement> = {
   overview: <InstitutionOverview />,
   policy: <PolicyManagement />,
   budget: <BudgetFinance />,

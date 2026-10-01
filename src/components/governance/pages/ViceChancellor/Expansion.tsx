@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ReactElement, useState } from 'react';
 import SectionHeader from '@/components/governance/components/shared/SectionHeader';
 import StatusBadge from '@/components/governance/components/shared/StatusBadge';
 import ProgressBar from '@/components/governance/components/shared/ProgressBar';
@@ -39,7 +39,7 @@ const EXPANSIONS = [
   },
 ];
 
-const catIcon: Record<string, JSX.Element> = {
+const catIcon: Record<string, ReactElement> = {
   'New Programs': <BookOpen className="w-4 h-4 text-amber-600" />,
   'Technology': <Cpu className="w-4 h-4 text-amber-600" />,
   'Infrastructure': <Building2 className="w-4 h-4 text-amber-600" />,

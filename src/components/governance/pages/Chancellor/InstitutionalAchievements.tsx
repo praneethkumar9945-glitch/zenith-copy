@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { ReactElement, useState } from 'react';
 import { useApp } from '@/components/governance/context';
 import SectionHeader from '@/components/governance/components/shared/SectionHeader';
 import StatsCard from '@/components/governance/components/shared/StatsCard';
 import Modal from '@/components/governance/components/shared/Modal';
 import { Award, Star, Trophy, Microscope, Dumbbell } from 'lucide-react';
 
-const categoryIcons: Record<string, JSX.Element> = {
+const categoryIcons: Record<string, ReactElement> = {
   Award: <Trophy className="w-5 h-5 text-amber-600" />,
   Ranking: <Star className="w-5 h-5 text-primary" />,
   Accreditation: <Award className="w-5 h-5 text-emerald-600" />,

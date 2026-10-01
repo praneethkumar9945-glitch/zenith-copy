@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { ReactElement, useEffect, useRef, useState } from 'react';
 import {
   Award, BarChart2, BarChart3, BookOpen, Briefcase, Building2, Calendar,
   CheckSquare, Compass, Expand, FileText, GraduationCap, Handshake, MessageSquare,
@@ -37,7 +37,7 @@ const CATEGORIES = [
   { id: 'projects', label: 'Institutional Projects & Initiatives', icon: <Rocket className="w-4 h-4" />, modules: ['expansion', 'projects', 'improvement'] },
 ];
 
-const MODULES: Record<string, { label: string; icon: JSX.Element; content: JSX.Element }> = {
+const MODULES: Record<string, { label: string; icon: ReactElement; content: ReactElement }> = {
   academicPerformance: { label: 'Academic Performance', icon: <BarChart3 className="w-4 h-4" />, content: <AcademicPerformance /> },
   graduation: { label: 'Graduation & Convocation', icon: <GraduationCap className="w-4 h-4" />, content: <GraduationConvocation /> },
   achievements: { label: 'Institutional Achievements', icon: <Award className="w-4 h-4" />, content: <InstitutionalAchievements /> },
