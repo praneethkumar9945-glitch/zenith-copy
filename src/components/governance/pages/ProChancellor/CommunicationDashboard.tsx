@@ -16,7 +16,7 @@ const MESSAGES = [
 const priorityColor: Record<string, string> = {
   High: 'bg-red-100 text-red-600',
   Medium: 'bg-amber-100 text-amber-600',
-  Low: 'bg-slate-100 text-slate-500',
+  Low: 'bg-muted text-muted-foreground',
 };
 
 export default function CommunicationDashboard() {
@@ -33,10 +33,10 @@ export default function CommunicationDashboard() {
           { label: 'Pending', value: MESSAGES.filter(m => m.status === 'Pending').length },
           { label: 'Sent', value: MESSAGES.filter(m => m.status === 'Sent').length },
         ].map(s => (
-          <div key={s.label} className="bg-white rounded-2xl border border-slate-200 p-4">
+          <div key={s.label} className="bg-card rounded-lg border border-border p-4">
             <div className="flex items-center gap-2 min-w-0">
-              <p className="text-xl font-bold text-slate-800 leading-none">{s.value}</p>
-              <p className="text-sm text-slate-500 font-medium truncate">{s.label}</p>
+              <p className="text-xl font-bold text-foreground leading-none">{s.value}</p>
+              <p className="text-sm text-muted-foreground font-medium truncate">{s.label}</p>
             </div>
           </div>
         ))}
@@ -48,21 +48,21 @@ export default function CommunicationDashboard() {
             key={msg.id}
             onDoubleClick={() => setSelectedMessage(msg)}
             title="Double-click for details"
-            className="bg-white rounded-2xl border border-slate-200 p-5 hover:shadow-sm transition-shadow cursor-pointer"
+            className="bg-card rounded-lg border border-border p-5 hover:shadow-sm transition-shadow cursor-pointer"
           >
             <div className="flex items-start justify-between gap-4 mb-2">
               <div className="flex items-start gap-3 flex-1 min-w-0">
-                <div className="w-9 h-9 bg-emerald-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-9 h-9 bg-emerald-50 rounded-md flex items-center justify-center flex-shrink-0">
                   <MessageSquare className="w-4.5 h-4.5 text-emerald-600" style={{ width: 18, height: 18 }} />
                 </div>
                 <div className="min-w-0">
                   <div className="flex items-center gap-2 flex-wrap mb-1">
-                    <h3 className="font-bold text-slate-800 text-sm">{msg.subject}</h3>
+                    <h3 className="font-bold text-foreground text-sm">{msg.subject}</h3>
                     <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${priorityColor[msg.priority]}`}>{msg.priority}</span>
                     <StatusBadge status={msg.status} />
                   </div>
-                  <div className="flex items-center gap-2 text-xs text-slate-500">
-                    <span className="font-medium text-slate-600">{msg.from}</span>
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <span className="font-medium text-muted-foreground">{msg.from}</span>
                     <ArrowRight className="w-3 h-3" />
                     <span>{msg.to}</span>
                     <span>·</span>
@@ -71,7 +71,7 @@ export default function CommunicationDashboard() {
                 </div>
               </div>
             </div>
-            <p className="text-sm text-slate-600 pl-12">{msg.body}</p>
+            <p className="text-sm text-muted-foreground pl-12">{msg.body}</p>
           </div>
         ))}
       </div>
@@ -93,15 +93,15 @@ export default function CommunicationDashboard() {
                 { label: 'Priority', value: selectedMessage.priority },
                 { label: 'Status', value: selectedMessage.status },
               ].map(item => (
-                <div key={item.label} className="bg-slate-50 rounded-xl p-3">
-                  <p className="text-xs text-slate-500 mb-1">{item.label}</p>
-                  <p className="font-semibold text-slate-800 text-sm">{item.value}</p>
+                <div key={item.label} className="bg-background rounded-md p-3">
+                  <p className="text-xs text-muted-foreground mb-1">{item.label}</p>
+                  <p className="font-semibold text-foreground text-sm">{item.value}</p>
                 </div>
               ))}
             </div>
-            <div className="bg-slate-50 rounded-xl p-4">
-              <h4 className="text-sm font-bold text-slate-700 mb-2">Message</h4>
-              <p className="text-sm text-slate-600 leading-relaxed">{selectedMessage.body}</p>
+            <div className="bg-background rounded-md p-4">
+              <h4 className="text-sm font-bold text-foreground mb-2">Message</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">{selectedMessage.body}</p>
             </div>
           </div>
         </Modal>

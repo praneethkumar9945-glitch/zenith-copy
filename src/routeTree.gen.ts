@@ -16,6 +16,7 @@ import { Route as AppStudentsRouteImport } from './routes/_app.students'
 import { Route as AppSalesRouteImport } from './routes/_app.sales'
 import { Route as AppMarketingRouteImport } from './routes/_app.marketing'
 import { Route as AppHrRouteImport } from './routes/_app.hr'
+import { Route as AppGovernanceRouteImport } from './routes/_app.governance'
 import { Route as AppFeesRouteImport } from './routes/_app.fees'
 import { Route as AppExamsRouteImport } from './routes/_app.exams'
 import { Route as AppCrmRouteImport } from './routes/_app.crm'
@@ -82,6 +83,11 @@ const AppMarketingRoute = AppMarketingRouteImport.update({
 const AppHrRoute = AppHrRouteImport.update({
   id: '/hr',
   path: '/hr',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppGovernanceRoute = AppGovernanceRouteImport.update({
+  id: '/governance',
+  path: '/governance',
   getParentRoute: () => AppRoute,
 } as any)
 const AppFeesRoute = AppFeesRouteImport.update({
@@ -260,6 +266,7 @@ export interface FileRoutesByFullPath {
   '/crm': typeof AppCrmRoute
   '/exams': typeof AppExamsRoute
   '/fees': typeof AppFeesRoute
+  '/governance': typeof AppGovernanceRoute
   '/hr': typeof AppHrRouteWithChildren
   '/marketing': typeof AppMarketingRoute
   '/sales': typeof AppSalesRouteWithChildren
@@ -298,6 +305,7 @@ export interface FileRoutesByTo {
   '/crm': typeof AppCrmRoute
   '/exams': typeof AppExamsRoute
   '/fees': typeof AppFeesRoute
+  '/governance': typeof AppGovernanceRoute
   '/marketing': typeof AppMarketingRoute
   '/students': typeof AppStudentsRoute
   '/workspace': typeof AppWorkspaceRoute
@@ -338,6 +346,7 @@ export interface FileRoutesById {
   '/_app/crm': typeof AppCrmRoute
   '/_app/exams': typeof AppExamsRoute
   '/_app/fees': typeof AppFeesRoute
+  '/_app/governance': typeof AppGovernanceRoute
   '/_app/hr': typeof AppHrRouteWithChildren
   '/_app/marketing': typeof AppMarketingRoute
   '/_app/sales': typeof AppSalesRouteWithChildren
@@ -382,6 +391,7 @@ export interface FileRouteTypes {
     | '/crm'
     | '/exams'
     | '/fees'
+    | '/governance'
     | '/hr'
     | '/marketing'
     | '/sales'
@@ -420,6 +430,7 @@ export interface FileRouteTypes {
     | '/crm'
     | '/exams'
     | '/fees'
+    | '/governance'
     | '/marketing'
     | '/students'
     | '/workspace'
@@ -459,6 +470,7 @@ export interface FileRouteTypes {
     | '/_app/crm'
     | '/_app/exams'
     | '/_app/fees'
+    | '/_app/governance'
     | '/_app/hr'
     | '/_app/marketing'
     | '/_app/sales'
@@ -546,6 +558,13 @@ declare module '@tanstack/react-router' {
       path: '/hr'
       fullPath: '/hr'
       preLoaderRoute: typeof AppHrRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/governance': {
+      id: '/_app/governance'
+      path: '/governance'
+      fullPath: '/governance'
+      preLoaderRoute: typeof AppGovernanceRouteImport
       parentRoute: typeof AppRoute
     }
     '/_app/fees': {
@@ -890,6 +909,7 @@ interface AppRouteChildren {
   AppCrmRoute: typeof AppCrmRoute
   AppExamsRoute: typeof AppExamsRoute
   AppFeesRoute: typeof AppFeesRoute
+  AppGovernanceRoute: typeof AppGovernanceRoute
   AppHrRoute: typeof AppHrRouteWithChildren
   AppMarketingRoute: typeof AppMarketingRoute
   AppSalesRoute: typeof AppSalesRouteWithChildren
@@ -906,6 +926,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppCrmRoute: AppCrmRoute,
   AppExamsRoute: AppExamsRoute,
   AppFeesRoute: AppFeesRoute,
+  AppGovernanceRoute: AppGovernanceRoute,
   AppHrRoute: AppHrRouteWithChildren,
   AppMarketingRoute: AppMarketingRoute,
   AppSalesRoute: AppSalesRouteWithChildren,

@@ -27,40 +27,40 @@ export default function InstitutionalCoordination() {
 
       <div className="grid grid-cols-3 gap-2 mb-2">
         <StatsCard title="Completed Tasks" value={done} icon={<CheckCircle className="w-5 h-5 text-emerald-600" />} iconBg="bg-emerald-50" layout="horizontal" />
-        <StatsCard title="In Progress" value={inProgress} icon={<Clock className="w-5 h-5 text-blue-600" />} iconBg="bg-blue-50" layout="horizontal" />
+        <StatsCard title="In Progress" value={inProgress} icon={<Clock className="w-5 h-5 text-primary" />} iconBg="bg-primary/10" layout="horizontal" />
         <StatsCard title="Pending" value={pending} icon={<Network className="w-5 h-5 text-amber-600" />} iconBg="bg-amber-50" layout="horizontal" />
       </div>
 
-      <div className="bg-white rounded-2xl border border-slate-200 p-5 mb-2">
-        <h3 className="text-sm font-bold text-slate-700 mb-3">Coordination Progress</h3>
+      <div className="bg-card rounded-lg border border-border p-5 mb-2">
+        <h3 className="text-sm font-bold text-foreground mb-3">Coordination Progress</h3>
         <ProgressBar value={(done / TASKS.length) * 100} color="bg-rose-500" label={`${done}/${TASKS.length} tasks completed`} />
       </div>
 
-      <div className="bg-white rounded-2xl border border-slate-200">
-        <div className="px-5 py-4 border-b border-slate-100">
-          <h3 className="text-base font-bold text-slate-800">Coordination Tasks</h3>
+      <div className="bg-card rounded-lg border border-border">
+        <div className="px-5 py-4 border-b border-border">
+          <h3 className="text-base font-bold text-foreground">Coordination Tasks</h3>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-slate-100 bg-slate-50">
-                <th className="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase">Task</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase">Source</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase">Department</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase">Deadline</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase">Priority</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase">Status</th>
+              <tr className="border-b border-border bg-background">
+                <th className="text-left px-5 py-3 text-xs font-semibold text-muted-foreground uppercase">Task</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-muted-foreground uppercase">Source</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-muted-foreground uppercase">Department</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-muted-foreground uppercase">Deadline</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-muted-foreground uppercase">Priority</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-muted-foreground uppercase">Status</th>
               </tr>
             </thead>
             <tbody>
               {TASKS.map(t => (
-                <tr key={t.id} className="border-b border-slate-50 hover:bg-slate-50">
-                  <td className="px-5 py-3 text-slate-700 font-medium max-w-xs">{t.task}</td>
-                  <td className="px-4 py-3 text-slate-500 text-xs">{t.from}</td>
-                  <td className="px-4 py-3 text-slate-600">{t.dept}</td>
-                  <td className="px-4 py-3 text-slate-500">{t.deadline}</td>
+                <tr key={t.id} className="border-b border-slate-50 hover:bg-background">
+                  <td className="px-5 py-3 text-foreground font-medium max-w-xs">{t.task}</td>
+                  <td className="px-4 py-3 text-muted-foreground text-xs">{t.from}</td>
+                  <td className="px-4 py-3 text-muted-foreground">{t.dept}</td>
+                  <td className="px-4 py-3 text-muted-foreground">{t.deadline}</td>
                   <td className="px-4 py-3">
-                    <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${t.priority === 'High' ? 'bg-red-100 text-red-600' : t.priority === 'Medium' ? 'bg-amber-100 text-amber-600' : 'bg-slate-100 text-slate-500'}`}>{t.priority}</span>
+                    <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${t.priority === 'High' ? 'bg-red-100 text-red-600' : t.priority === 'Medium' ? 'bg-amber-100 text-amber-600' : 'bg-muted text-muted-foreground'}`}>{t.priority}</span>
                   </td>
                   <td className="px-4 py-3"><StatusBadge status={t.status} /></td>
                 </tr>

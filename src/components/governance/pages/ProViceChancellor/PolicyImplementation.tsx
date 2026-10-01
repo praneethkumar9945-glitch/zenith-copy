@@ -27,28 +27,28 @@ export default function PolicyImplementation() {
       <div className="grid grid-cols-3 gap-2 mb-2">
         <StatsCard title="Approved Policies" value={approvedPolicies} icon={<Settings className="w-5 h-5 text-rose-600" />} iconBg="bg-rose-50" layout="horizontal" />
         <StatsCard title="Fully Implemented" value={done} icon={<CheckCircle className="w-5 h-5 text-emerald-600" />} iconBg="bg-emerald-50" layout="horizontal" />
-        <StatsCard title="In Progress" value={inProg} icon={<Clock className="w-5 h-5 text-blue-600" />} iconBg="bg-blue-50" layout="horizontal" />
+        <StatsCard title="In Progress" value={inProg} icon={<Clock className="w-5 h-5 text-primary" />} iconBg="bg-primary/10" layout="horizontal" />
       </div>
 
       <div className="space-y-2">
         {IMPLEMENTATIONS.map(item => (
-          <div key={item.id} className="bg-white rounded-2xl border border-slate-200 p-5">
+          <div key={item.id} className="bg-card rounded-lg border border-border p-5">
             <div className="flex items-start justify-between gap-4 mb-3">
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap mb-1">
-                  <h3 className="font-bold text-slate-800">{item.policy}</h3>
+                  <h3 className="font-bold text-foreground">{item.policy}</h3>
                   <StatusBadge status={item.status} />
                 </div>
-                <div className="text-xs text-slate-500 flex flex-wrap gap-3">
-                  <span>Dept: <span className="font-medium text-slate-600">{item.dept}</span></span>
-                  <span>Lead: <span className="font-medium text-slate-600">{item.implementationLead}</span></span>
-                  <span>Target: <span className="font-medium text-slate-600">{item.targetDate}</span></span>
+                <div className="text-xs text-muted-foreground flex flex-wrap gap-3">
+                  <span>Dept: <span className="font-medium text-muted-foreground">{item.dept}</span></span>
+                  <span>Lead: <span className="font-medium text-muted-foreground">{item.implementationLead}</span></span>
+                  <span>Target: <span className="font-medium text-muted-foreground">{item.targetDate}</span></span>
                 </div>
               </div>
-              <span className={`text-xl font-bold flex-shrink-0 ${item.progress === 100 ? 'text-emerald-600' : item.progress >= 60 ? 'text-blue-600' : 'text-amber-600'}`}>{item.progress}%</span>
+              <span className={`text-xl font-bold flex-shrink-0 ${item.progress === 100 ? 'text-emerald-600' : item.progress >= 60 ? 'text-primary' : 'text-amber-600'}`}>{item.progress}%</span>
             </div>
-            <ProgressBar value={item.progress} color={item.progress === 100 ? 'bg-emerald-500' : item.progress >= 60 ? 'bg-blue-500' : 'bg-amber-500'} showLabel={false} />
-            <p className="text-sm text-slate-600 mt-3 bg-slate-50 rounded-lg p-3">{item.notes}</p>
+            <ProgressBar value={item.progress} color={item.progress === 100 ? 'bg-emerald-500' : item.progress >= 60 ? 'bg-primary/100' : 'bg-amber-500'} showLabel={false} />
+            <p className="text-sm text-muted-foreground mt-3 bg-background rounded-lg p-3">{item.notes}</p>
           </div>
         ))}
       </div>

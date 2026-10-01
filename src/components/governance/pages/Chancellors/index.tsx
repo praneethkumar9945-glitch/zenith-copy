@@ -102,8 +102,8 @@ export default function Chancellors() {
     <Layout role="chancellors" navItems={navItems} activeModule={activeCategory} onModuleChange={selectCategory}>
       <div className="mb-6">
         <div className="mb-4">
-          <p className="text-cyan-600 text-xs font-semibold uppercase tracking-widest mb-1">Chancellors</p>
-          <h1 className="text-2xl font-bold text-slate-900">{category.label}</h1>
+          <p className="text-primary text-xs font-semibold uppercase tracking-widest mb-1">Chancellors</p>
+          <h1 className="text-2xl font-bold text-foreground">{category.label}</h1>
         </div>
         <div className="flex gap-2 overflow-x-auto pb-1">
           {category.modules.map(moduleId => {
@@ -113,7 +113,7 @@ export default function Chancellors() {
               <button
                 key={moduleId}
                 onClick={() => selectModule(moduleId)}
-                className={`flex items-center gap-2 whitespace-nowrap rounded-lg border px-3 py-2 text-sm font-medium transition-all duration-200 ease-in-out ${isActive ? 'border-cyan-600 bg-cyan-600 text-white shadow-sm' : 'border-slate-200 bg-white text-slate-600 hover:border-cyan-300 hover:text-cyan-700'}`}
+                className={`flex items-center gap-2 whitespace-nowrap rounded-lg border px-3 py-2 text-sm font-medium transition-all duration-200 ease-in-out ${isActive ? 'border-primary bg-primary text-primary-foreground shadow-sm' : 'border-border bg-card text-muted-foreground hover:border-primary/40 hover:text-primary'}`}
               >
                 {module.icon}
                 {module.label}

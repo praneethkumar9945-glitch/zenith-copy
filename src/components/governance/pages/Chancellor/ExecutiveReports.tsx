@@ -15,23 +15,23 @@ export default function ExecutiveReports() {
       <SectionHeader title="Executive Reports" subtitle="Institutional performance and academic summary reports" />
       <div className="space-y-4">
         {REPORTS.map(r => (
-          <div key={r.id} className="bg-white rounded-2xl border border-slate-200 p-5 flex items-start gap-4 hover:shadow-sm transition-shadow">
-            <div className="w-10 h-10 bg-cyan-50 rounded-xl flex items-center justify-center flex-shrink-0">
-              <FileText className="w-5 h-5 text-cyan-600" />
+          <div key={r.id} className="bg-card rounded-lg border border-border p-5 flex items-start gap-4 hover:shadow-sm transition-shadow">
+            <div className="w-10 h-10 bg-primary/10 rounded-md flex items-center justify-center flex-shrink-0">
+              <FileText className="w-5 h-5 text-primary" />
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-0.5 flex-wrap">
-                <h3 className="font-bold text-slate-800">{r.title}</h3>
+                <h3 className="font-bold text-foreground">{r.title}</h3>
                 <StatusBadge status={r.status} />
               </div>
-              <p className="text-xs text-slate-500 mb-2">{r.date} · {r.pages} pages · {r.type}</p>
-              <p className="text-sm text-slate-600">{r.summary}</p>
+              <p className="text-xs text-muted-foreground mb-2">{r.date} · {r.pages} pages · {r.type}</p>
+              <p className="text-sm text-muted-foreground">{r.summary}</p>
             </div>
             <div className="flex gap-2 flex-shrink-0">
-              <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-600 border border-slate-200 rounded-lg hover:bg-slate-50">
+              <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-muted-foreground border border-border rounded-lg hover:bg-background">
                 <Eye className="w-3.5 h-3.5" /> View
               </button>
-              <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-cyan-600 border border-cyan-200 rounded-lg hover:bg-cyan-50">
+              <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-primary border border-cyan-200 rounded-lg hover:bg-primary/10">
                 <Download className="w-3.5 h-3.5" /> Export
               </button>
             </div>

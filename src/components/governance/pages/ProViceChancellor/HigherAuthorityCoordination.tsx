@@ -36,11 +36,11 @@ const COMMUNICATIONS = [
 ];
 
 const typeColors: Record<string, string> = {
-  'Report Submission': 'bg-blue-100 text-blue-700',
+  'Report Submission': 'bg-primary/10 text-primary',
   'Progress Update': 'bg-emerald-100 text-emerald-700',
   'Coordination': 'bg-purple-100 text-purple-700',
   'Recommendation': 'bg-amber-100 text-amber-700',
-  'Minutes': 'bg-slate-100 text-slate-600',
+  'Minutes': 'bg-muted text-muted-foreground',
 };
 
 const AUTHORITIES = [
@@ -60,43 +60,43 @@ export default function HigherAuthorityCoordination() {
       {/* Authority contacts */}
       <div className="grid grid-cols-4 gap-2 mb-2">
         {AUTHORITIES.map(a => (
-          <div key={a.name} className="h-full bg-white rounded-2xl border border-slate-200 p-4 flex items-start gap-3">
-            <div className="w-10 h-10 bg-rose-50 rounded-xl flex items-center justify-center flex-shrink-0">
+          <div key={a.name} className="h-full bg-card rounded-lg border border-border p-4 flex items-start gap-3">
+            <div className="w-10 h-10 bg-rose-50 rounded-md flex items-center justify-center flex-shrink-0">
               <Users2 className="w-5 h-5 text-rose-600" />
             </div>
             <div>
-              <p className="font-bold text-slate-800 text-sm">{a.name}</p>
+              <p className="font-bold text-foreground text-sm">{a.name}</p>
               <p className="text-xs text-rose-600 font-medium">{a.role}</p>
-              <p className="text-xs text-slate-500 mt-1">Frequency: {a.frequency}</p>
-              <p className="text-xs text-slate-500">Last Contact: {a.lastContact}</p>
-              <p className="text-xs text-slate-400 mt-1">{a.topics}</p>
+              <p className="text-xs text-muted-foreground mt-1">Frequency: {a.frequency}</p>
+              <p className="text-xs text-muted-foreground">Last Contact: {a.lastContact}</p>
+              <p className="text-xs text-muted-foreground mt-1">{a.topics}</p>
             </div>
           </div>
         ))}
       </div>
 
       {/* Communications log */}
-      <h3 className="text-base font-bold text-slate-800 mb-3">Communications Log</h3>
+      <h3 className="text-base font-bold text-foreground mb-3">Communications Log</h3>
       <div className="space-y-2">
         {COMMUNICATIONS.map(c => (
           <div
             key={c.id}
             onDoubleClick={() => setSelectedCommunication(c)}
             title="Double-click for details"
-            className="bg-white rounded-2xl border border-slate-200 p-5 hover:shadow-sm transition-shadow cursor-pointer"
+            className="bg-card rounded-lg border border-border p-5 hover:shadow-sm transition-shadow cursor-pointer"
           >
             <div className="flex items-start gap-3">
-              <div className="w-9 h-9 bg-rose-50 rounded-xl flex items-center justify-center flex-shrink-0">
+              <div className="w-9 h-9 bg-rose-50 rounded-md flex items-center justify-center flex-shrink-0">
                 <MessageSquare className="w-4.5 h-4.5 text-rose-600" style={{ width: 18, height: 18 }} />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap mb-1">
-                  <h4 className="font-bold text-slate-800 text-sm">{c.subject}</h4>
-                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${typeColors[c.type] ?? 'bg-slate-100 text-slate-600'}`}>{c.type}</span>
+                  <h4 className="font-bold text-foreground text-sm">{c.subject}</h4>
+                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${typeColors[c.type] ?? 'bg-muted text-muted-foreground'}`}>{c.type}</span>
                   <StatusBadge status={c.status} />
                 </div>
-                <p className="text-xs text-slate-500 mb-2">To: <span className="font-medium text-slate-600">{c.to}</span> · {c.date}</p>
-                <p className="text-sm text-slate-600">{c.summary}</p>
+                <p className="text-xs text-muted-foreground mb-2">To: <span className="font-medium text-muted-foreground">{c.to}</span> · {c.date}</p>
+                <p className="text-sm text-muted-foreground">{c.summary}</p>
               </div>
             </div>
           </div>
@@ -120,15 +120,15 @@ export default function HigherAuthorityCoordination() {
                 { label: 'Type', value: selectedCommunication.type },
                 { label: 'Status', value: selectedCommunication.status },
               ].map(item => (
-                <div key={item.label} className="bg-slate-50 rounded-xl p-3">
-                  <p className="text-xs text-slate-500 mb-1">{item.label}</p>
-                  <p className="font-semibold text-slate-800 text-sm">{item.value}</p>
+                <div key={item.label} className="bg-background rounded-md p-3">
+                  <p className="text-xs text-muted-foreground mb-1">{item.label}</p>
+                  <p className="font-semibold text-foreground text-sm">{item.value}</p>
                 </div>
               ))}
             </div>
-            <div className="bg-slate-50 rounded-xl p-4">
-              <h4 className="text-sm font-bold text-slate-700 mb-2">Details Sent</h4>
-              <p className="text-sm text-slate-600 leading-relaxed">{selectedCommunication.summary}</p>
+            <div className="bg-background rounded-md p-4">
+              <h4 className="text-sm font-bold text-foreground mb-2">Details Sent</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">{selectedCommunication.summary}</p>
             </div>
           </div>
         </Modal>

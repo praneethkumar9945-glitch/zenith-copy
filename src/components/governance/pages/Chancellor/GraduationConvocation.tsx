@@ -17,7 +17,7 @@ export default function GraduationConvocation() {
       <SectionHeader title="Graduation & Convocation" subtitle="Class of 2024 — convocation schedule and statistics" />
 
       {/* Convocation Card */}
-      <div className="bg-gradient-to-br from-cyan-600 to-cyan-800 rounded-2xl p-5 md:p-6 mb-2 text-white">
+      <div className="bg-gradient-to-br from-cyan-600 to-cyan-800 rounded-lg p-5 md:p-6 mb-2 text-primary-foreground">
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0 flex-1">
             <p className="pl-1 text-cyan-200 text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] mb-2">Convocation 2024</p>
@@ -26,48 +26,48 @@ export default function GraduationConvocation() {
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-6">
               <div className="min-w-0">
                 <p className="text-cyan-200 text-[10px] sm:text-xs uppercase tracking-[0.2em]">Date</p>
-                <p className="mt-2 font-bold text-white text-base sm:text-lg leading-snug">{graduationData.date}</p>
+                <p className="mt-2 font-bold text-primary-foreground text-base sm:text-lg leading-snug">{graduationData.date}</p>
               </div>
               <div className="min-w-0">
                 <p className="text-cyan-200 text-[10px] sm:text-xs uppercase tracking-[0.2em]">Venue</p>
-                <p className="mt-2 font-bold text-white text-base sm:text-lg leading-snug">{graduationData.venue}</p>
+                <p className="mt-2 font-bold text-primary-foreground text-base sm:text-lg leading-snug">{graduationData.venue}</p>
               </div>
               <div className="min-w-0">
                 <p className="text-cyan-200 text-[10px] sm:text-xs uppercase tracking-[0.2em]">Chief Guest</p>
-                <p className="mt-2 font-bold text-white text-sm sm:text-[15px] leading-relaxed break-words">{graduationData.chiefGuest}</p>
+                <p className="mt-2 font-bold text-primary-foreground text-sm sm:text-[15px] leading-relaxed break-words">{graduationData.chiefGuest}</p>
               </div>
               <div className="min-w-0">
                 <p className="text-cyan-200 text-[10px] sm:text-xs uppercase tracking-[0.2em]">Total Graduates</p>
-                <p className="mt-2 font-bold text-white text-2xl sm:text-3xl leading-none">{graduationData.totalGraduates}</p>
+                <p className="mt-2 font-bold text-primary-foreground text-2xl sm:text-3xl leading-none">{graduationData.totalGraduates}</p>
               </div>
             </div>
           </div>
 
-          <GraduationCap className="w-12 h-12 sm:w-16 sm:h-16 text-white/20 flex-shrink-0 mt-1 mr-1" />
+          <GraduationCap className="w-12 h-12 sm:w-16 sm:h-16 text-primary-foreground/20 flex-shrink-0 mt-1 mr-1" />
         </div>
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 mb-2">
-        <StatsCard title="Total Graduates" value={graduationData.totalGraduates} icon={<GraduationCap className="w-5 h-5 text-cyan-600" />} iconBg="bg-cyan-50" layout="horizontal" />
-        <StatsCard title="UG Graduates" value={graduationData.ug} subtitle="Bachelor's degrees" icon={<Users className="w-5 h-5 text-blue-600" />} iconBg="bg-blue-50" layout="horizontal" />
+        <StatsCard title="Total Graduates" value={graduationData.totalGraduates} icon={<GraduationCap className="w-5 h-5 text-primary" />} iconBg="bg-primary/10" layout="horizontal" />
+        <StatsCard title="UG Graduates" value={graduationData.ug} subtitle="Bachelor's degrees" icon={<Users className="w-5 h-5 text-primary" />} iconBg="bg-primary/10" layout="horizontal" />
         <StatsCard title="PG Graduates" value={graduationData.pg} subtitle="Master's degrees" icon={<Users className="w-5 h-5 text-purple-600" />} iconBg="bg-purple-50" layout="horizontal" />
         <StatsCard title="Gold Medalists" value={graduationData.goldMedalists} subtitle="Academic excellence" icon={<Award className="w-5 h-5 text-amber-600" />} iconBg="bg-amber-50" layout="horizontal" />
       </div>
 
       {/* Dept-wise graduates */}
-      <div className="bg-white rounded-2xl border border-slate-200 mb-2">
-        <div className="px-5 py-4 border-b border-slate-100">
-          <h3 className="text-base font-bold text-slate-800">Department-Wise Graduating Students (2024)</h3>
+      <div className="bg-card rounded-lg border border-border mb-2">
+        <div className="px-5 py-4 border-b border-border">
+          <h3 className="text-base font-bold text-foreground">Department-Wise Graduating Students (2024)</h3>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-slate-100 bg-slate-50">
-                <th className="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase">Department</th>
-                <th className="text-right px-4 py-3 text-xs font-semibold text-slate-500 uppercase">UG Graduates</th>
-                <th className="text-right px-4 py-3 text-xs font-semibold text-slate-500 uppercase">PG Graduates</th>
-                <th className="text-right px-4 py-3 text-xs font-semibold text-slate-500 uppercase">PhD</th>
-                <th className="text-right px-4 py-3 text-xs font-semibold text-slate-500 uppercase">Gold Medals</th>
+              <tr className="border-b border-border bg-background">
+                <th className="text-left px-5 py-3 text-xs font-semibold text-muted-foreground uppercase">Department</th>
+                <th className="text-right px-4 py-3 text-xs font-semibold text-muted-foreground uppercase">UG Graduates</th>
+                <th className="text-right px-4 py-3 text-xs font-semibold text-muted-foreground uppercase">PG Graduates</th>
+                <th className="text-right px-4 py-3 text-xs font-semibold text-muted-foreground uppercase">PhD</th>
+                <th className="text-right px-4 py-3 text-xs font-semibold text-muted-foreground uppercase">Gold Medals</th>
               </tr>
             </thead>
             <tbody>
@@ -78,12 +78,12 @@ export default function GraduationConvocation() {
                 return (
                   <tr
                     key={dept.id}
-                    className="border-b border-slate-50 hover:bg-slate-50"
+                    className="border-b border-slate-50 hover:bg-background"
                   >
-                    <td className="px-5 py-3 font-medium text-slate-800">{dept.name}</td>
-                    <td className="px-4 py-3 text-right text-slate-700 font-medium">{ugGrads}</td>
-                    <td className="px-4 py-3 text-right text-slate-700 font-medium">{pgGrads}</td>
-                    <td className="px-4 py-3 text-right text-slate-700 font-medium">{phd}</td>
+                    <td className="px-5 py-3 font-medium text-foreground">{dept.name}</td>
+                    <td className="px-4 py-3 text-right text-foreground font-medium">{ugGrads}</td>
+                    <td className="px-4 py-3 text-right text-foreground font-medium">{pgGrads}</td>
+                    <td className="px-4 py-3 text-right text-foreground font-medium">{phd}</td>
                     <td className="px-4 py-3 text-right font-bold text-amber-600">{[2, 2, 1, 1, 2][i]}</td>
                   </tr>
                 );
@@ -94,8 +94,8 @@ export default function GraduationConvocation() {
       </div>
 
       {/* Upcoming ceremony schedule */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-5">
-        <h3 className="text-base font-bold text-slate-800 mb-4">Convocation Schedule</h3>
+      <div className="bg-card rounded-lg border border-border p-5">
+        <h3 className="text-base font-bold text-foreground mb-4">Convocation Schedule</h3>
         <div className="space-y-3">
           {[
             { time: '9:00 AM', event: 'Academic Procession & Assembly', venue: 'Main Auditorium' },
@@ -109,14 +109,14 @@ export default function GraduationConvocation() {
           ].map(item => (
             <div
               key={item.time}
-              className="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors"
+              className="flex items-start gap-4 p-3 rounded-md hover:bg-background transition-colors"
             >
               <div className="w-20 flex-shrink-0">
-                <span className="text-sm font-bold text-cyan-600">{item.time}</span>
+                <span className="text-sm font-bold text-primary">{item.time}</span>
               </div>
               <div>
-                <p className="text-sm font-medium text-slate-800">{item.event}</p>
-                <p className="text-xs text-slate-500">{item.venue}</p>
+                <p className="text-sm font-medium text-foreground">{item.event}</p>
+                <p className="text-xs text-muted-foreground">{item.venue}</p>
               </div>
             </div>
           ))}
@@ -139,15 +139,15 @@ export default function GraduationConvocation() {
                 { label: 'Faculty', value: selectedDept.faculty },
                 { label: 'Accreditation', value: selectedDept.accreditation },
               ].map(item => (
-                <div key={item.label} className="bg-slate-50 rounded-xl p-3">
-                  <p className="text-xs text-slate-500 mb-1">{item.label}</p>
-                  <p className="font-semibold text-slate-800 text-sm">{item.value}</p>
+                <div key={item.label} className="bg-background rounded-md p-3">
+                  <p className="text-xs text-muted-foreground mb-1">{item.label}</p>
+                  <p className="font-semibold text-foreground text-sm">{item.value}</p>
                 </div>
               ))}
             </div>
-            <div className="bg-slate-50 rounded-xl p-4">
-              <h4 className="text-sm font-bold text-slate-700 mb-2">Department Overview</h4>
-              <p className="text-sm text-slate-600 leading-relaxed">{selectedDept.description}</p>
+            <div className="bg-background rounded-md p-4">
+              <h4 className="text-sm font-bold text-foreground mb-2">Department Overview</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">{selectedDept.description}</p>
             </div>
           </div>
         </Modal>
@@ -163,18 +163,18 @@ export default function GraduationConvocation() {
         >
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-slate-50 rounded-xl p-3">
-                <p className="text-xs text-slate-500 mb-1">Time</p>
-                <p className="font-semibold text-slate-800 text-sm">{selectedSchedule.time}</p>
+              <div className="bg-background rounded-md p-3">
+                <p className="text-xs text-muted-foreground mb-1">Time</p>
+                <p className="font-semibold text-foreground text-sm">{selectedSchedule.time}</p>
               </div>
-              <div className="bg-slate-50 rounded-xl p-3">
-                <p className="text-xs text-slate-500 mb-1">Venue</p>
-                <p className="font-semibold text-slate-800 text-sm">{selectedSchedule.venue}</p>
+              <div className="bg-background rounded-md p-3">
+                <p className="text-xs text-muted-foreground mb-1">Venue</p>
+                <p className="font-semibold text-foreground text-sm">{selectedSchedule.venue}</p>
               </div>
             </div>
-            <div className="bg-slate-50 rounded-xl p-4">
-              <h4 className="text-sm font-bold text-slate-700 mb-2">Program Notes</h4>
-              <p className="text-sm text-slate-600 leading-relaxed">This segment is part of the annual convocation ceremony and is scheduled to take place at the venue listed above.</p>
+            <div className="bg-background rounded-md p-4">
+              <h4 className="text-sm font-bold text-foreground mb-2">Program Notes</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">This segment is part of the annual convocation ceremony and is scheduled to take place at the venue listed above.</p>
             </div>
           </div>
         </Modal>

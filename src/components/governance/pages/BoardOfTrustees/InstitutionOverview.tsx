@@ -25,7 +25,7 @@ export default function InstitutionOverview() {
 
       {/* Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 mb-2">
-        <StatsCard className="p-4" title="Total Students" value={totalStudents.toLocaleString()} subtitle="Across all departments" icon={<Users className="w-5 h-5 text-blue-600" />} iconBg="bg-blue-50" trend={{ value: 2.5, label: 'vs last year' }} layout="horizontal" />
+        <StatsCard className="p-4" title="Total Students" value={totalStudents.toLocaleString()} subtitle="Across all departments" icon={<Users className="w-5 h-5 text-primary" />} iconBg="bg-primary/10" trend={{ value: 2.5, label: 'vs last year' }} layout="horizontal" />
         <StatsCard className="p-4" title="Faculty Members" value={totalFaculty} subtitle="Full-time teaching staff" icon={<GraduationCap className="w-5 h-5 text-emerald-600" />} iconBg="bg-emerald-50" trend={{ value: 4.2, label: 'vs last year' }} layout="horizontal" />
         <StatsCard className="p-4" title="Departments" value={departments.length} subtitle="Academic departments" icon={<Building2 className="w-5 h-5 text-amber-600" />} iconBg="bg-amber-50" layout="horizontal" />
         <StatsCard className="p-4" title="Courses Offered" value={totalCourses} subtitle="UG, PG & PhD programs" icon={<BookOpen className="w-5 h-5 text-rose-600" />} iconBg="bg-rose-50" layout="horizontal" />
@@ -33,27 +33,27 @@ export default function InstitutionOverview() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 mb-2">
         <StatsCard className="p-4" title="Avg. Pass Rate" value={`${avgPassRate}%`} subtitle="Across all departments" icon={<TrendingUp className="w-5 h-5 text-purple-600" />} iconBg="bg-purple-50" trend={{ value: 1.8, label: 'vs last year' }} layout="horizontal" />
-        <StatsCard className="p-4" title="Research Projects" value={departments.reduce((s, d) => s + d.researchProjects, 0)} subtitle="Active research projects" icon={<Layers className="w-5 h-5 text-cyan-600" />} iconBg="bg-cyan-50" trend={{ value: 10.5, label: 'vs last year' }} layout="horizontal" />
+        <StatsCard className="p-4" title="Research Projects" value={departments.reduce((s, d) => s + d.researchProjects, 0)} subtitle="Active research projects" icon={<Layers className="w-5 h-5 text-primary" />} iconBg="bg-primary/10" trend={{ value: 10.5, label: 'vs last year' }} layout="horizontal" />
         <StatsCard className="p-4" title="Accreditations" value="NAAC A+" subtitle="Highest grade; NIRF Rank 85" icon={<Award className="w-5 h-5 text-amber-600" />} iconBg="bg-amber-50" layout="horizontal" />
       </div>
 
       {/* Departments Table */}
-      <div className="bg-white rounded-2xl border border-slate-200 mb-2">
-        <div className="px-5 py-4 border-b border-slate-100">
-          <h3 className="text-base font-bold text-slate-800">Departments</h3>
-          <p className="text-xs text-slate-500 mt-0.5">Double-click a row to view full department details</p>
+      <div className="bg-card rounded-lg border border-border mb-2">
+        <div className="px-5 py-4 border-b border-border">
+          <h3 className="text-base font-bold text-foreground">Departments</h3>
+          <p className="text-xs text-muted-foreground mt-0.5">Double-click a row to view full department details</p>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-slate-100 bg-slate-50">
-                <th className="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Department</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Code</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Head</th>
-                <th className="text-right px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Faculty</th>
-                <th className="text-right px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Students</th>
-                <th className="text-right px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Pass Rate</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Accreditation</th>
+              <tr className="border-b border-border bg-background">
+                <th className="text-left px-5 py-3 text-xs font-semibold text-muted-foreground uppercase tracking-wide">Department</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-muted-foreground uppercase tracking-wide">Code</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-muted-foreground uppercase tracking-wide">Head</th>
+                <th className="text-right px-4 py-3 text-xs font-semibold text-muted-foreground uppercase tracking-wide">Faculty</th>
+                <th className="text-right px-4 py-3 text-xs font-semibold text-muted-foreground uppercase tracking-wide">Students</th>
+                <th className="text-right px-4 py-3 text-xs font-semibold text-muted-foreground uppercase tracking-wide">Pass Rate</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-muted-foreground uppercase tracking-wide">Accreditation</th>
               </tr>
             </thead>
             <tbody>
@@ -61,14 +61,14 @@ export default function InstitutionOverview() {
                 <tr
                   key={dept.id}
                   onDoubleClick={() => setSelectedDept(dept)}
-                  className="border-b border-slate-50 hover:bg-blue-50/40 cursor-pointer transition-colors"
+                  className="border-b border-slate-50 hover:bg-primary/10/40 cursor-pointer transition-colors"
                   title="Double-click for details"
                 >
-                  <td className="px-5 py-3.5 font-medium text-slate-800">{dept.name}</td>
-                  <td className="px-4 py-3.5"><span className="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded">{dept.code}</span></td>
-                  <td className="px-4 py-3.5 text-slate-600">{dept.head}</td>
-                  <td className="px-4 py-3.5 text-right font-medium text-slate-700">{dept.faculty}</td>
-                  <td className="px-4 py-3.5 text-right font-medium text-slate-700">{dept.students}</td>
+                  <td className="px-5 py-3.5 font-medium text-foreground">{dept.name}</td>
+                  <td className="px-4 py-3.5"><span className="bg-primary/10 text-primary text-xs font-bold px-2 py-0.5 rounded">{dept.code}</span></td>
+                  <td className="px-4 py-3.5 text-muted-foreground">{dept.head}</td>
+                  <td className="px-4 py-3.5 text-right font-medium text-foreground">{dept.faculty}</td>
+                  <td className="px-4 py-3.5 text-right font-medium text-foreground">{dept.students}</td>
                   <td className="px-4 py-3.5 text-right">
                     <span className={`font-semibold ${dept.passRate >= 92 ? 'text-emerald-600' : dept.passRate >= 88 ? 'text-amber-600' : 'text-red-500'}`}>{dept.passRate}%</span>
                   </td>
@@ -81,18 +81,18 @@ export default function InstitutionOverview() {
       </div>
 
       {/* Enrollment Trend */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-5">
-        <h3 className="text-base font-bold text-slate-800 mb-4">Enrollment Trend (5 Years)</h3>
+      <div className="bg-card rounded-lg border border-border p-5">
+        <h3 className="text-base font-bold text-foreground mb-4">Enrollment Trend (5 Years)</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-slate-100">
-                <th className="text-left py-2 text-xs font-semibold text-slate-500">Year</th>
-                <th className="text-right py-2 text-xs font-semibold text-slate-500">Total</th>
-                <th className="text-right py-2 text-xs font-semibold text-slate-500">UG</th>
-                <th className="text-right py-2 text-xs font-semibold text-slate-500">PG</th>
-                <th className="text-right py-2 text-xs font-semibold text-slate-500">PhD</th>
-                <th className="py-2 px-4 text-right min-w-[88px] text-xs font-semibold text-slate-500">Growth</th>
+              <tr className="border-b border-border">
+                <th className="text-left py-2 text-xs font-semibold text-muted-foreground">Year</th>
+                <th className="text-right py-2 text-xs font-semibold text-muted-foreground">Total</th>
+                <th className="text-right py-2 text-xs font-semibold text-muted-foreground">UG</th>
+                <th className="text-right py-2 text-xs font-semibold text-muted-foreground">PG</th>
+                <th className="text-right py-2 text-xs font-semibold text-muted-foreground">PhD</th>
+                <th className="py-2 px-4 text-right min-w-[88px] text-xs font-semibold text-muted-foreground">Growth</th>
               </tr>
             </thead>
             <tbody>
@@ -102,12 +102,12 @@ export default function InstitutionOverview() {
                   ? (((row.total - prev.total) / prev.total) * 100).toFixed(1)
                   : null;
                 return (
-                  <tr key={row.year} className="border-b border-slate-50 hover:bg-slate-50">
-                    <td className="py-2.5 font-medium text-slate-700">{row.year}</td>
-                    <td className="py-2.5 text-right font-bold text-slate-800">{row.total.toLocaleString()}</td>
-                    <td className="py-2.5 text-right text-slate-600">{row.ug.toLocaleString()}</td>
-                    <td className="py-2.5 text-right text-slate-600">{row.pg}</td>
-                    <td className="py-2.5 text-right text-slate-600">{row.phd}</td>
+                  <tr key={row.year} className="border-b border-slate-50 hover:bg-background">
+                    <td className="py-2.5 font-medium text-foreground">{row.year}</td>
+                    <td className="py-2.5 text-right font-bold text-foreground">{row.total.toLocaleString()}</td>
+                    <td className="py-2.5 text-right text-muted-foreground">{row.ug.toLocaleString()}</td>
+                    <td className="py-2.5 text-right text-muted-foreground">{row.pg}</td>
+                    <td className="py-2.5 text-right text-muted-foreground">{row.phd}</td>
                     <td className="py-2.5 px-4 text-right whitespace-nowrap">
                       {growth && <span className="text-emerald-600 font-semibold text-xs">+{growth}%</span>}
                     </td>
@@ -134,43 +134,43 @@ export default function InstitutionOverview() {
                 { label: 'Labs', value: selectedDept.labs },
                 { label: 'Accreditation', value: selectedDept.accreditation },
               ].map(item => (
-                <div key={item.label} className="bg-slate-50 rounded-xl p-3">
-                  <p className="text-xs text-slate-500 mb-0.5">{item.label}</p>
-                  <p className="font-semibold text-slate-800 text-sm">{item.value}</p>
+                <div key={item.label} className="bg-background rounded-md p-3">
+                  <p className="text-xs text-muted-foreground mb-0.5">{item.label}</p>
+                  <p className="font-semibold text-foreground text-sm">{item.value}</p>
                 </div>
               ))}
             </div>
             <div>
-              <h4 className="text-sm font-bold text-slate-700 mb-2">About the Department</h4>
-              <p className="text-sm text-slate-600 leading-relaxed">{selectedDept.description}</p>
+              <h4 className="text-sm font-bold text-foreground mb-2">About the Department</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">{selectedDept.description}</p>
             </div>
             <div>
-              <h4 className="text-sm font-bold text-slate-700 mb-3">Courses Offered ({selectedDept.courses.length})</h4>
-              <div className="overflow-x-auto rounded-xl border border-slate-200">
+              <h4 className="text-sm font-bold text-foreground mb-3">Courses Offered ({selectedDept.courses.length})</h4>
+              <div className="overflow-x-auto rounded-md border border-border">
                 <table className="w-full text-sm">
-                  <thead className="bg-slate-50 border-b border-slate-200">
+                  <thead className="bg-background border-b border-border">
                     <tr>
-                      <th className="text-left px-4 py-2.5 text-xs font-semibold text-slate-500">Course</th>
-                      <th className="text-left px-4 py-2.5 text-xs font-semibold text-slate-500">Code</th>
-                      <th className="text-left px-4 py-2.5 text-xs font-semibold text-slate-500">Type</th>
-                      <th className="text-right px-4 py-2.5 text-xs font-semibold text-slate-500">Credits</th>
-                      <th className="text-right px-4 py-2.5 text-xs font-semibold text-slate-500">Enrolled</th>
-                      <th className="text-right px-4 py-2.5 text-xs font-semibold text-slate-500">Pass %</th>
-                      <th className="text-left px-4 py-2.5 text-xs font-semibold text-slate-500">Instructor</th>
+                      <th className="text-left px-4 py-2.5 text-xs font-semibold text-muted-foreground">Course</th>
+                      <th className="text-left px-4 py-2.5 text-xs font-semibold text-muted-foreground">Code</th>
+                      <th className="text-left px-4 py-2.5 text-xs font-semibold text-muted-foreground">Type</th>
+                      <th className="text-right px-4 py-2.5 text-xs font-semibold text-muted-foreground">Credits</th>
+                      <th className="text-right px-4 py-2.5 text-xs font-semibold text-muted-foreground">Enrolled</th>
+                      <th className="text-right px-4 py-2.5 text-xs font-semibold text-muted-foreground">Pass %</th>
+                      <th className="text-left px-4 py-2.5 text-xs font-semibold text-muted-foreground">Instructor</th>
                     </tr>
                   </thead>
                   <tbody>
                     {selectedDept.courses.map(c => (
-                      <tr key={c.id} className="border-b border-slate-50 hover:bg-slate-50">
-                        <td className="px-4 py-2.5 font-medium text-slate-700">{c.name}</td>
-                        <td className="px-4 py-2.5 text-slate-500 font-mono text-xs">{c.code}</td>
+                      <tr key={c.id} className="border-b border-slate-50 hover:bg-background">
+                        <td className="px-4 py-2.5 font-medium text-foreground">{c.name}</td>
+                        <td className="px-4 py-2.5 text-muted-foreground font-mono text-xs">{c.code}</td>
                         <td className="px-4 py-2.5">
-                          <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${c.type === 'UG' ? 'bg-blue-100 text-blue-700' : c.type === 'PG' ? 'bg-purple-100 text-purple-700' : 'bg-amber-100 text-amber-700'}`}>{c.type}</span>
+                          <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${c.type === 'UG' ? 'bg-primary/10 text-primary' : c.type === 'PG' ? 'bg-purple-100 text-purple-700' : 'bg-amber-100 text-amber-700'}`}>{c.type}</span>
                         </td>
-                        <td className="px-4 py-2.5 text-right text-slate-600">{c.credits}</td>
-                        <td className="px-4 py-2.5 text-right text-slate-700 font-medium">{c.enrolled}</td>
+                        <td className="px-4 py-2.5 text-right text-muted-foreground">{c.credits}</td>
+                        <td className="px-4 py-2.5 text-right text-foreground font-medium">{c.enrolled}</td>
                         <td className="px-4 py-2.5 text-right font-semibold text-emerald-600">{c.passRate}%</td>
-                        <td className="px-4 py-2.5 text-slate-600">{c.instructor}</td>
+                        <td className="px-4 py-2.5 text-muted-foreground">{c.instructor}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -178,7 +178,7 @@ export default function InstitutionOverview() {
               </div>
             </div>
             <div>
-              <h4 className="text-sm font-bold text-slate-700 mb-3">Performance</h4>
+              <h4 className="text-sm font-bold text-foreground mb-3">Performance</h4>
               <ProgressBar value={selectedDept.passRate} label="Overall Pass Rate" color="bg-emerald-500" />
             </div>
           </div>

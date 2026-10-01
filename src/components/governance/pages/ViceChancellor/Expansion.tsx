@@ -66,15 +66,15 @@ export default function Expansion() {
 
       <div className="grid grid-cols-3 gap-2 mb-2">
         <StatsCard title="Approved / Active" value={approved} icon={<Expand className="w-5 h-5 text-amber-600" />} iconBg="bg-amber-50" layout="horizontal" />
-        <StatsCard title="Under Review" value={pending} icon={<Expand className="w-5 h-5 text-blue-600" />} iconBg="bg-blue-50" layout="horizontal" />
-        <StatsCard title="Planned" value={planned} icon={<Expand className="w-5 h-5 text-slate-500" />} iconBg="bg-slate-50" layout="horizontal" />
+        <StatsCard title="Under Review" value={pending} icon={<Expand className="w-5 h-5 text-primary" />} iconBg="bg-primary/10" layout="horizontal" />
+        <StatsCard title="Planned" value={planned} icon={<Expand className="w-5 h-5 text-muted-foreground" />} iconBg="bg-background" layout="horizontal" />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
         {expansions.map(item => (
-          <div key={item.id} onDoubleClick={() => setSelectedExpansion(item)} title="Double-click for details" className="bg-white rounded-2xl border border-slate-200 p-5 hover:shadow-sm transition-shadow cursor-pointer">
+          <div key={item.id} onDoubleClick={() => setSelectedExpansion(item)} title="Double-click for details" className="bg-card rounded-lg border border-border p-5 hover:shadow-sm transition-shadow cursor-pointer">
             <div className="flex items-start gap-3 mb-3">
-              <div className="w-9 h-9 bg-amber-50 rounded-xl flex items-center justify-center flex-shrink-0">
+              <div className="w-9 h-9 bg-amber-50 rounded-md flex items-center justify-center flex-shrink-0">
                 {catIcon[item.category] ?? <Expand className="w-4 h-4 text-amber-600" />}
               </div>
               <div className="flex-1 min-w-0">
@@ -82,26 +82,26 @@ export default function Expansion() {
                   <span className="text-xs font-semibold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">{item.category}</span>
                   <StatusBadge status={item.status} />
                 </div>
-                <h3 className="font-bold text-slate-800 text-sm">{item.title}</h3>
+                <h3 className="font-bold text-foreground text-sm">{item.title}</h3>
               </div>
             </div>
-            <p className="text-sm text-slate-600 mb-4">{item.details}</p>
+            <p className="text-sm text-muted-foreground mb-4">{item.details}</p>
             <div className="grid grid-cols-3 gap-3 mb-4 text-xs">
-              <div className="bg-slate-50 rounded-lg p-2">
-                <p className="text-slate-400">Investment</p>
-                <p className="font-bold text-slate-700 mt-0.5">{item.investment}</p>
+              <div className="bg-background rounded-lg p-2">
+                <p className="text-muted-foreground">Investment</p>
+                <p className="font-bold text-foreground mt-0.5">{item.investment}</p>
               </div>
-              <div className="bg-slate-50 rounded-lg p-2">
-                <p className="text-slate-400">Timeline</p>
-                <p className="font-bold text-slate-700 mt-0.5">{item.timeline}</p>
+              <div className="bg-background rounded-lg p-2">
+                <p className="text-muted-foreground">Timeline</p>
+                <p className="font-bold text-foreground mt-0.5">{item.timeline}</p>
               </div>
-              <div className="bg-slate-50 rounded-lg p-2">
-                <p className="text-slate-400">Lead</p>
-                <p className="font-bold text-slate-700 mt-0.5">{item.lead}</p>
+              <div className="bg-background rounded-lg p-2">
+                <p className="text-muted-foreground">Lead</p>
+                <p className="font-bold text-foreground mt-0.5">{item.lead}</p>
               </div>
             </div>
             <ProgressBar value={item.progress} color={item.progress >= 70 ? 'bg-emerald-500' : item.progress >= 40 ? 'bg-amber-500' : 'bg-slate-300'} showLabel={false} />
-            <p className="text-xs text-slate-500 mt-1.5">Progress: {item.progress}%</p>
+            <p className="text-xs text-muted-foreground mt-1.5">Progress: {item.progress}%</p>
           </div>
         ))}
       </div>
@@ -110,10 +110,10 @@ export default function Expansion() {
         <Modal open={!!selectedExpansion} onClose={() => setSelectedExpansion(null)} title={selectedExpansion.title} subtitle={selectedExpansion.category} size="lg">
           <div className="space-y-5">
             <div className="flex items-center gap-2">
-              <span className="text-sm text-slate-500">Current status</span>
+              <span className="text-sm text-muted-foreground">Current status</span>
               <StatusBadge status={selectedExpansion.status} />
             </div>
-            <p className="text-sm leading-6 text-slate-600">{selectedExpansion.details}</p>
+            <p className="text-sm leading-6 text-muted-foreground">{selectedExpansion.details}</p>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
               {[
                 { label: 'Intake', value: selectedExpansion.intake ? `${selectedExpansion.intake} seats` : 'Not applicable' },
@@ -121,25 +121,25 @@ export default function Expansion() {
                 { label: 'Timeline', value: selectedExpansion.timeline },
                 { label: 'Lead', value: selectedExpansion.lead },
               ].map(detail => (
-                <div key={detail.label} className="rounded-xl bg-slate-50 p-3">
-                  <p className="text-xs text-slate-500">{detail.label}</p>
-                  <p className="mt-0.5 text-sm font-semibold text-slate-800">{detail.value}</p>
+                <div key={detail.label} className="rounded-md bg-background p-3">
+                  <p className="text-xs text-muted-foreground">{detail.label}</p>
+                  <p className="mt-0.5 text-sm font-semibold text-foreground">{detail.value}</p>
                 </div>
               ))}
             </div>
             <div>
               <div className="mb-2 flex items-center justify-between">
-                <span className="text-sm font-semibold text-slate-700">Progress</span>
+                <span className="text-sm font-semibold text-foreground">Progress</span>
                 <span className="text-sm font-bold text-amber-600">{selectedExpansion.progress}%</span>
               </div>
               <ProgressBar value={selectedExpansion.progress} color={selectedExpansion.progress >= 70 ? 'bg-emerald-500' : selectedExpansion.progress >= 40 ? 'bg-amber-500' : 'bg-slate-300'} showLabel={false} />
             </div>
-            <div className="border-t border-slate-100 pt-4">
-              <p className="mb-3 text-sm font-semibold text-slate-700">Update status</p>
+            <div className="border-t border-border pt-4">
+              <p className="mb-3 text-sm font-semibold text-foreground">Update status</p>
               <div className="grid grid-cols-3 gap-3">
-                <button onClick={() => updateStatus('Approved')} className="rounded-lg bg-emerald-600 px-3 py-2.5 text-sm font-medium text-white hover:bg-emerald-700">Approve</button>
-                <button onClick={() => updateStatus('Ongoing')} className="rounded-lg bg-amber-500 px-3 py-2.5 text-sm font-medium text-white hover:bg-amber-600">Ongoing</button>
-                <button onClick={() => updateStatus('Pending')} className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100">Pending</button>
+                <button onClick={() => updateStatus('Approved')} className="rounded-lg bg-emerald-600 px-3 py-2.5 text-sm font-medium text-primary-foreground hover:bg-emerald-700">Approve</button>
+                <button onClick={() => updateStatus('Ongoing')} className="rounded-lg bg-amber-500 px-3 py-2.5 text-sm font-medium text-primary-foreground hover:bg-amber-600">Ongoing</button>
+                <button onClick={() => updateStatus('Pending')} className="rounded-lg border border-border bg-background px-3 py-2.5 text-sm font-medium text-foreground hover:bg-muted">Pending</button>
               </div>
             </div>
           </div>

@@ -26,39 +26,39 @@ export default function Approvals() {
 
       <div className="grid grid-cols-3 gap-2 mb-2">
         <StatsCard title="Pending Policies" value={pendingPolicies.length} icon={<Clock className="w-5 h-5 text-amber-600" />} iconBg="bg-amber-50" layout="horizontal" />
-        <StatsCard title="Pending Appointments" value={pendingAppts.length} icon={<AlertCircle className="w-5 h-5 text-blue-600" />} iconBg="bg-blue-50" layout="horizontal" />
+        <StatsCard title="Pending Appointments" value={pendingAppts.length} icon={<AlertCircle className="w-5 h-5 text-primary" />} iconBg="bg-primary/10" layout="horizontal" />
         <StatsCard title="Projects to Activate" value={pendingProjects.length} icon={<CheckCircle className="w-5 h-5 text-emerald-600" />} iconBg="bg-emerald-50" layout="horizontal" />
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-2 mb-4 border-b border-slate-200 pb-0">
+      <div className="flex gap-2 mb-4 border-b border-border pb-0">
         {(['policies', 'appointments', 'projects'] as const).map(tab => (
-          <button key={tab} onClick={() => setActiveTab(tab)} className={`px-4 py-2.5 text-sm font-semibold capitalize border-b-2 transition-colors ${activeTab === tab ? 'border-amber-500 text-amber-600' : 'border-transparent text-slate-500 hover:text-slate-700'}`}>
+          <button key={tab} onClick={() => setActiveTab(tab)} className={`px-4 py-2.5 text-sm font-semibold capitalize border-b-2 transition-colors ${activeTab === tab ? 'border-amber-500 text-amber-600' : 'border-transparent text-muted-foreground hover:text-foreground'}`}>
             {tab} {tab === 'policies' ? `(${pendingPolicies.length})` : tab === 'appointments' ? `(${pendingAppts.length})` : `(${pendingProjects.length})`}
           </button>
         ))}
       </div>
 
       {activeTab === 'policies' && (
-        <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+        <div className="bg-card rounded-lg border border-border overflow-hidden">
           {pendingPolicies.length === 0 ? (
-            <div className="py-12 text-center text-slate-400">No pending policies.</div>
+            <div className="py-12 text-center text-muted-foreground">No pending policies.</div>
           ) : (
             <div className="divide-y divide-slate-100">
               {pendingPolicies.map(policy => (
-                <div key={policy.id} className="p-5 hover:bg-slate-50">
+                <div key={policy.id} className="p-5 hover:bg-background">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1 min-w-0 cursor-pointer" onClick={() => setViewItem(policy)}>
                       <div className="flex items-center gap-2 mb-1">
-                        <h3 className="font-bold text-slate-800">{policy.title}</h3>
+                        <h3 className="font-bold text-foreground">{policy.title}</h3>
                         <StatusBadge status={policy.status} />
                         <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${policy.priority === 'High' ? 'bg-red-100 text-red-600' : 'bg-amber-100 text-amber-600'}`}>{policy.priority}</span>
                       </div>
-                      <p className="text-xs text-slate-500 mb-1">{policy.category} · Submitted by {policy.submittedBy} on {policy.submittedDate}</p>
-                      <p className="text-sm text-slate-600">{policy.description}</p>
+                      <p className="text-xs text-muted-foreground mb-1">{policy.category} · Submitted by {policy.submittedBy} on {policy.submittedDate}</p>
+                      <p className="text-sm text-muted-foreground">{policy.description}</p>
                     </div>
                     <div className="flex gap-2 flex-shrink-0">
-                      <button onClick={() => approve(policy)} className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors">
+                      <button onClick={() => approve(policy)} className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-emerald-600 text-primary-foreground rounded-lg hover:bg-emerald-700 transition-colors">
                         <CheckCircle className="w-3.5 h-3.5" /> Approve
                       </button>
                       <button onClick={() => reject(policy)} className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-red-50 text-red-600 border border-red-200 rounded-lg hover:bg-red-100 transition-colors">
@@ -74,32 +74,32 @@ export default function Approvals() {
       )}
 
       {activeTab === 'appointments' && (
-        <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+        <div className="bg-card rounded-lg border border-border overflow-hidden">
           {pendingAppts.length === 0 ? (
-            <div className="py-12 text-center text-slate-400">No pending appointments.</div>
+            <div className="py-12 text-center text-muted-foreground">No pending appointments.</div>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b border-slate-100 bg-slate-50">
-                    <th className="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase">Name</th>
-                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase">Position</th>
-                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase">Qualification</th>
-                    <th className="text-right px-4 py-3 text-xs font-semibold text-slate-500 uppercase">Exp.</th>
-                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase">Status</th>
-                    <th className="px-4 py-3 text-xs font-semibold text-slate-500 uppercase">Action</th>
+                  <tr className="border-b border-border bg-background">
+                    <th className="text-left px-5 py-3 text-xs font-semibold text-muted-foreground uppercase">Name</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-muted-foreground uppercase">Position</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-muted-foreground uppercase">Qualification</th>
+                    <th className="text-right px-4 py-3 text-xs font-semibold text-muted-foreground uppercase">Exp.</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-muted-foreground uppercase">Status</th>
+                    <th className="px-4 py-3 text-xs font-semibold text-muted-foreground uppercase">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {pendingAppts.map(appt => (
-                    <tr key={appt.id} className="border-b border-slate-50 hover:bg-slate-50">
-                      <td className="px-5 py-3 font-medium text-slate-800">{appt.name}</td>
-                      <td className="px-4 py-3 text-slate-600">{appt.position}</td>
-                      <td className="px-4 py-3 text-slate-600">{appt.qualification}</td>
-                      <td className="px-4 py-3 text-right text-slate-600">{appt.experience} yrs</td>
+                    <tr key={appt.id} className="border-b border-slate-50 hover:bg-background">
+                      <td className="px-5 py-3 font-medium text-foreground">{appt.name}</td>
+                      <td className="px-4 py-3 text-muted-foreground">{appt.position}</td>
+                      <td className="px-4 py-3 text-muted-foreground">{appt.qualification}</td>
+                      <td className="px-4 py-3 text-right text-muted-foreground">{appt.experience} yrs</td>
                       <td className="px-4 py-3"><StatusBadge status={appt.status} /></td>
                       <td className="px-4 py-3">
-                        <button onClick={() => approveAppt(appt)} className="flex items-center gap-1 px-3 py-1.5 text-xs font-medium bg-amber-500 text-white rounded-lg hover:bg-amber-600">
+                        <button onClick={() => approveAppt(appt)} className="flex items-center gap-1 px-3 py-1.5 text-xs font-medium bg-amber-500 text-primary-foreground rounded-lg hover:bg-amber-600">
                           <CheckCircle className="w-3 h-3" /> Approve
                         </button>
                       </td>
@@ -115,19 +115,19 @@ export default function Approvals() {
       {activeTab === 'projects' && (
         <div className="space-y-3">
           {pendingProjects.length === 0 ? (
-            <div className="bg-white rounded-2xl border border-slate-200 py-12 text-center text-slate-400">No planned projects pending activation.</div>
+            <div className="bg-card rounded-lg border border-border py-12 text-center text-muted-foreground">No planned projects pending activation.</div>
           ) : pendingProjects.map(p => (
-            <div key={p.id} className="bg-white rounded-2xl border border-slate-200 p-5">
+            <div key={p.id} className="bg-card rounded-lg border border-border p-5">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <div className="flex items-center gap-2 mb-1">
-                    <h3 className="font-bold text-slate-800">{p.name}</h3>
+                    <h3 className="font-bold text-foreground">{p.name}</h3>
                     <StatusBadge status={p.status} />
                   </div>
-                  <p className="text-xs text-slate-500 mb-2">Lead: {p.lead} · Category: {p.category} · Budget: ₹{(p.budget / 10000000).toFixed(1)} Cr</p>
-                  <p className="text-sm text-slate-600">{p.description}</p>
+                  <p className="text-xs text-muted-foreground mb-2">Lead: {p.lead} · Category: {p.category} · Budget: ₹{(p.budget / 10000000).toFixed(1)} Cr</p>
+                  <p className="text-sm text-muted-foreground">{p.description}</p>
                 </div>
-                <button onClick={() => updateProject({ ...p, status: 'Ongoing' })} className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-amber-500 text-white rounded-lg hover:bg-amber-600 flex-shrink-0">
+                <button onClick={() => updateProject({ ...p, status: 'Ongoing' })} className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-amber-500 text-primary-foreground rounded-lg hover:bg-amber-600 flex-shrink-0">
                   <CheckCircle className="w-3.5 h-3.5" /> Activate
                 </button>
               </div>
@@ -146,14 +146,14 @@ export default function Approvals() {
                 { l: 'Submitted By', v: viewItem.submittedBy },
                 { l: 'Date', v: viewItem.submittedDate },
               ].map(i => (
-                <div key={i.l} className="bg-slate-50 rounded-xl p-3">
-                  <p className="text-xs text-slate-500">{i.l}</p>
-                  <p className="font-semibold text-slate-800 text-sm mt-0.5">{i.v}</p>
+                <div key={i.l} className="bg-background rounded-md p-3">
+                  <p className="text-xs text-muted-foreground">{i.l}</p>
+                  <p className="font-semibold text-foreground text-sm mt-0.5">{i.v}</p>
                 </div>
               ))}
             </div>
-            <div className="bg-slate-50 rounded-xl p-4">
-              <p className="text-sm text-slate-700 leading-relaxed">{viewItem.description}</p>
+            <div className="bg-background rounded-md p-4">
+              <p className="text-sm text-foreground leading-relaxed">{viewItem.description}</p>
             </div>
           </div>
         </Modal>

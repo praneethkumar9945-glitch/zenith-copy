@@ -12,20 +12,20 @@ interface StatsCardProps {
   layout?: 'stacked' | 'horizontal';
 }
 
-export default function StatsCard({ title, value, subtitle, icon, iconBg = 'bg-blue-100', trend, className = '', layout = 'stacked' }: StatsCardProps) {
+export default function StatsCard({ title, value, subtitle, icon, iconBg = 'bg-primary/10', trend, className = '', layout = 'stacked' }: StatsCardProps) {
   if (layout === 'horizontal') {
     return (
-      <div className={`bg-white rounded-2xl border border-slate-200 p-4 hover:shadow-md transition-shadow duration-200 ${className}`}>
+      <div className={`bg-card rounded-lg border border-border p-4 hover:shadow-md transition-shadow duration-200 ${className}`}>
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-baseline gap-2 min-w-0">
-            <p className="text-xl font-bold text-slate-800 leading-none">{value}</p>
-            <p className="text-slate-600 text-sm font-medium truncate leading-tight">{title}</p>
+            <p className="text-xl font-bold text-foreground leading-none">{value}</p>
+            <p className="text-muted-foreground text-sm font-medium truncate leading-tight">{title}</p>
           </div>
-          <div className={`w-10 h-10 ${iconBg} rounded-xl flex items-center justify-center flex-shrink-0`}>
+          <div className={`w-10 h-10 ${iconBg} rounded-md flex items-center justify-center flex-shrink-0`}>
             {icon}
           </div>
         </div>
-        {subtitle && <p className="text-slate-400 text-xs mt-1 leading-snug">{subtitle}</p>}
+        {subtitle && <p className="text-muted-foreground text-xs mt-1 leading-snug">{subtitle}</p>}
         {trend && (
           <div className="flex items-center justify-end gap-1 text-xs mt-0">
             <span className={`flex items-center gap-1 font-semibold ${trend.value >= 0 ? 'text-emerald-600' : 'text-red-500'}`}>
@@ -34,7 +34,7 @@ export default function StatsCard({ title, value, subtitle, icon, iconBg = 'bg-b
                 : <TrendingDown className="w-3.5 h-3.5" />}
               {Math.abs(trend.value)}%
             </span>
-            <span className="text-slate-400">{trend.label}</span>
+            <span className="text-muted-foreground">{trend.label}</span>
           </div>
         )}
       </div>
@@ -42,9 +42,9 @@ export default function StatsCard({ title, value, subtitle, icon, iconBg = 'bg-b
   }
 
   return (
-    <div className={`bg-white rounded-2xl border border-slate-200 p-4 hover:shadow-md transition-shadow duration-200 ${className}`}>
+    <div className={`bg-card rounded-lg border border-border p-4 hover:shadow-md transition-shadow duration-200 ${className}`}>
       <div className="flex items-start justify-between mb-2">
-        <div className={`w-10 h-10 ${iconBg} rounded-xl flex items-center justify-center flex-shrink-0`}>
+        <div className={`w-10 h-10 ${iconBg} rounded-md flex items-center justify-center flex-shrink-0`}>
           {icon}
         </div>
         {trend && (
@@ -56,10 +56,10 @@ export default function StatsCard({ title, value, subtitle, icon, iconBg = 'bg-b
           </div>
         )}
       </div>
-      <p className="text-xl font-bold text-slate-800 leading-none mb-1">{value}</p>
-      <p className="text-slate-600 text-sm font-medium leading-tight">{title}</p>
-      {subtitle && <p className="text-slate-400 text-xs mt-0 leading-snug">{subtitle}</p>}
-      {trend && <p className="text-slate-400 text-xs mt-0">{trend.label}</p>}
+      <p className="text-xl font-bold text-foreground leading-none mb-1">{value}</p>
+      <p className="text-muted-foreground text-sm font-medium leading-tight">{title}</p>
+      {subtitle && <p className="text-muted-foreground text-xs mt-0 leading-snug">{subtitle}</p>}
+      {trend && <p className="text-muted-foreground text-xs mt-0">{trend.label}</p>}
     </div>
   );
 }

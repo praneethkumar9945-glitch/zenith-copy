@@ -15,10 +15,10 @@ const REPORTS = [
 ];
 
 const deptColors: Record<string, string> = {
-  'Academic Affairs': 'bg-blue-100 text-blue-700',
+  'Academic Affairs': 'bg-primary/10 text-primary',
   'Finance': 'bg-emerald-100 text-emerald-700',
   'HR Department': 'bg-purple-100 text-purple-700',
-  'IT & Systems': 'bg-cyan-100 text-cyan-700',
+  'IT & Systems': 'bg-primary/10 text-primary',
   'Placement Cell': 'bg-amber-100 text-amber-700',
   'Infrastructure': 'bg-rose-100 text-rose-700',
   'Library': 'bg-teal-100 text-teal-700',
@@ -45,20 +45,20 @@ export default function AdministrativeReports() {
             key={r.id}
             onDoubleClick={() => setSelectedReport(r)}
             title="Double-click for details"
-            className="bg-white rounded-2xl border border-slate-200 p-5 hover:shadow-sm transition-shadow cursor-pointer"
+            className="bg-card rounded-lg border border-border p-5 hover:shadow-sm transition-shadow cursor-pointer"
           >
             <div className="flex items-start gap-4">
-              <div className="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 bg-emerald-50 rounded-md flex items-center justify-center flex-shrink-0">
                 <FileText className="w-5 h-5 text-emerald-600" />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap mb-1">
-                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${deptColors[r.dept] ?? 'bg-slate-100 text-slate-600'}`}>{r.dept}</span>
+                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${deptColors[r.dept] ?? 'bg-muted text-muted-foreground'}`}>{r.dept}</span>
                   <StatusBadge status={r.status} />
                 </div>
-                <h3 className="font-bold text-slate-800 text-sm mb-1">{r.title}</h3>
-                <p className="text-xs text-slate-500 mb-2">{r.date}</p>
-                <p className="text-sm text-slate-600">{r.highlights}</p>
+                <h3 className="font-bold text-foreground text-sm mb-1">{r.title}</h3>
+                <p className="text-xs text-muted-foreground mb-2">{r.date}</p>
+                <p className="text-sm text-muted-foreground">{r.highlights}</p>
               </div>
             </div>
           </div>
@@ -75,22 +75,22 @@ export default function AdministrativeReports() {
         >
           <div className="space-y-4">
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-              <div className="bg-slate-50 rounded-xl p-3">
-                <p className="text-xs text-slate-500 mb-1">Department</p>
-                <p className="font-semibold text-slate-800 text-sm">{selectedReport.dept}</p>
+              <div className="bg-background rounded-md p-3">
+                <p className="text-xs text-muted-foreground mb-1">Department</p>
+                <p className="font-semibold text-foreground text-sm">{selectedReport.dept}</p>
               </div>
-              <div className="bg-slate-50 rounded-xl p-3">
-                <p className="text-xs text-slate-500 mb-1">Date</p>
-                <p className="font-semibold text-slate-800 text-sm">{selectedReport.date}</p>
+              <div className="bg-background rounded-md p-3">
+                <p className="text-xs text-muted-foreground mb-1">Date</p>
+                <p className="font-semibold text-foreground text-sm">{selectedReport.date}</p>
               </div>
-              <div className="bg-slate-50 rounded-xl p-3">
-                <p className="text-xs text-slate-500 mb-1">Status</p>
+              <div className="bg-background rounded-md p-3">
+                <p className="text-xs text-muted-foreground mb-1">Status</p>
                 <StatusBadge status={selectedReport.status} />
               </div>
             </div>
-            <div className="bg-slate-50 rounded-xl p-4">
-              <h4 className="text-sm font-bold text-slate-700 mb-2">Report Information</h4>
-              <p className="text-sm text-slate-600 leading-relaxed">{selectedReport.highlights}</p>
+            <div className="bg-background rounded-md p-4">
+              <h4 className="text-sm font-bold text-foreground mb-2">Report Information</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">{selectedReport.highlights}</p>
             </div>
             <div className="flex flex-wrap justify-end gap-3 pt-2">
               <button onClick={() => updateReportStatus('Pending')} className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-amber-700 bg-amber-50 border border-amber-200 rounded-lg hover:bg-amber-100 transition-colors">
@@ -99,7 +99,7 @@ export default function AdministrativeReports() {
               <button onClick={() => updateReportStatus('Rejected')} className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-red-600 bg-red-50 border border-red-200 rounded-lg hover:bg-red-100 transition-colors">
                 <XCircle className="w-4 h-4" /> Reject
               </button>
-              <button onClick={() => updateReportStatus('Approved')} className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-emerald-600 rounded-lg hover:bg-emerald-700 transition-colors">
+              <button onClick={() => updateReportStatus('Approved')} className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary-foreground bg-emerald-600 rounded-lg hover:bg-emerald-700 transition-colors">
                 <CheckCircle className="w-4 h-4" /> Approve
               </button>
             </div>

@@ -30,27 +30,27 @@ export default function CommitteeReports() {
         <StatsCard title="Reports Pending" value={pending} icon={<Clock className="w-5 h-5 text-amber-600" />} iconBg="bg-amber-50" layout="horizontal" />
       </div>
 
-      <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+      <div className="bg-card rounded-lg border border-border overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-slate-100 bg-slate-50">
-                <th className="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase">Committee</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase">Chairperson</th>
-                <th className="text-right px-4 py-3 text-xs font-semibold text-slate-500 uppercase">Members</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase">Last Meeting</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase">Next Meeting</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase">Report</th>
+              <tr className="border-b border-border bg-background">
+                <th className="text-left px-5 py-3 text-xs font-semibold text-muted-foreground uppercase">Committee</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-muted-foreground uppercase">Chairperson</th>
+                <th className="text-right px-4 py-3 text-xs font-semibold text-muted-foreground uppercase">Members</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-muted-foreground uppercase">Last Meeting</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-muted-foreground uppercase">Next Meeting</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-muted-foreground uppercase">Report</th>
               </tr>
             </thead>
             <tbody>
               {COMMITTEES.map(c => (
-                <tr key={c.id} className="border-b border-slate-50 hover:bg-slate-50">
-                  <td className="px-5 py-3 font-medium text-slate-800">{c.name}</td>
-                  <td className="px-4 py-3 text-slate-600">{c.chair}</td>
-                  <td className="px-4 py-3 text-right text-slate-600">{c.members}</td>
-                  <td className="px-4 py-3 text-slate-500">{c.lastMeeting}</td>
-                  <td className="px-4 py-3 text-slate-500">{c.nextMeeting}</td>
+                <tr key={c.id} className="border-b border-slate-50 hover:bg-background">
+                  <td className="px-5 py-3 font-medium text-foreground">{c.name}</td>
+                  <td className="px-4 py-3 text-muted-foreground">{c.chair}</td>
+                  <td className="px-4 py-3 text-right text-muted-foreground">{c.members}</td>
+                  <td className="px-4 py-3 text-muted-foreground">{c.lastMeeting}</td>
+                  <td className="px-4 py-3 text-muted-foreground">{c.nextMeeting}</td>
                   <td className="px-4 py-3"><StatusBadge status={c.reportStatus} /></td>
                 </tr>
               ))}
@@ -60,19 +60,19 @@ export default function CommitteeReports() {
       </div>
 
       <div className="mt-6 space-y-2">
-        <h3 className="text-base font-bold text-slate-800">Recent Committee Activities</h3>
+        <h3 className="text-base font-bold text-foreground">Recent Committee Activities</h3>
         {COMMITTEES.filter(c => c.reportStatus === 'Submitted').slice(0, 4).map(c => (
           <div
             key={c.id}
             onDoubleClick={() => setSelectedCommittee(c)}
             title="Double-click for details"
-            className="bg-white rounded-2xl border border-slate-200 p-4 cursor-pointer"
+            className="bg-card rounded-lg border border-border p-4 cursor-pointer"
           >
             <div className="flex items-start justify-between gap-2 mb-1">
-              <h4 className="font-semibold text-slate-800 text-sm">{c.name}</h4>
-              <span className="text-xs text-slate-500">{c.lastMeeting}</span>
+              <h4 className="font-semibold text-foreground text-sm">{c.name}</h4>
+              <span className="text-xs text-muted-foreground">{c.lastMeeting}</span>
             </div>
-            <p className="text-sm text-slate-600">{c.activities}</p>
+            <p className="text-sm text-muted-foreground">{c.activities}</p>
           </div>
         ))}
       </div>
@@ -94,15 +94,15 @@ export default function CommitteeReports() {
                 { label: 'Next Meeting', value: selectedCommittee.nextMeeting },
                 { label: 'Report Status', value: selectedCommittee.reportStatus },
               ].map(item => (
-                <div key={item.label} className="bg-slate-50 rounded-xl p-3">
-                  <p className="text-xs text-slate-500 mb-1">{item.label}</p>
-                  <p className="font-semibold text-slate-800 text-sm">{item.value}</p>
+                <div key={item.label} className="bg-background rounded-md p-3">
+                  <p className="text-xs text-muted-foreground mb-1">{item.label}</p>
+                  <p className="font-semibold text-foreground text-sm">{item.value}</p>
                 </div>
               ))}
             </div>
-            <div className="bg-slate-50 rounded-xl p-4">
-              <h4 className="text-sm font-bold text-slate-700 mb-2">Activities</h4>
-              <p className="text-sm text-slate-600 leading-relaxed">{selectedCommittee.activities}</p>
+            <div className="bg-background rounded-md p-4">
+              <h4 className="text-sm font-bold text-foreground mb-2">Activities</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">{selectedCommittee.activities}</p>
             </div>
           </div>
         </Modal>

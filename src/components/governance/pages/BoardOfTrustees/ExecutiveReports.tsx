@@ -12,11 +12,11 @@ const REPORTS = [
 ];
 
 const typeColors: Record<string, string> = {
-  Annual: 'bg-blue-100 text-blue-700',
+  Annual: 'bg-primary/10 text-primary',
   Financial: 'bg-emerald-100 text-emerald-700',
   Strategic: 'bg-purple-100 text-purple-700',
   Academic: 'bg-amber-100 text-amber-700',
-  Research: 'bg-cyan-100 text-cyan-700',
+  Research: 'bg-primary/10 text-primary',
   Accreditation: 'bg-rose-100 text-rose-700',
 };
 
@@ -31,36 +31,36 @@ export default function ExecutiveReports() {
           { label: 'Approved', value: REPORTS.filter(r => r.status === 'Approved').length },
           { label: 'Under Review', value: REPORTS.filter(r => r.status === 'Under Review' || r.status === 'Pending').length },
         ].map(s => (
-          <div key={s.label} className="bg-white rounded-2xl border border-slate-200 p-5">
-            <p className="text-3xl font-bold text-slate-800">{s.value}</p>
-            <p className="text-slate-600 text-sm mt-1">{s.label}</p>
+          <div key={s.label} className="bg-card rounded-lg border border-border p-5">
+            <p className="text-3xl font-bold text-foreground">{s.value}</p>
+            <p className="text-muted-foreground text-sm mt-1">{s.label}</p>
           </div>
         ))}
       </div>
 
       <div className="grid grid-cols-1 gap-4">
         {REPORTS.map(report => (
-          <div key={report.id} className="bg-white rounded-2xl border border-slate-200 p-5 hover:shadow-sm transition-shadow">
+          <div key={report.id} className="bg-card rounded-lg border border-border p-5 hover:shadow-sm transition-shadow">
             <div className="flex items-start justify-between gap-4">
               <div className="flex items-start gap-3 min-w-0">
-                <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <FileText className="w-5 h-5 text-slate-500" />
+                <div className="w-10 h-10 bg-muted rounded-md flex items-center justify-center flex-shrink-0">
+                  <FileText className="w-5 h-5 text-muted-foreground" />
                 </div>
                 <div className="min-w-0">
                   <div className="flex items-center gap-2 flex-wrap mb-1">
-                    <h3 className="font-bold text-slate-800 text-sm">{report.title}</h3>
-                    <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${typeColors[report.type] ?? 'bg-slate-100 text-slate-600'}`}>{report.type}</span>
+                    <h3 className="font-bold text-foreground text-sm">{report.title}</h3>
+                    <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${typeColors[report.type] ?? 'bg-muted text-muted-foreground'}`}>{report.type}</span>
                     <StatusBadge status={report.status} />
                   </div>
-                  <p className="text-xs text-slate-500 mb-2">Prepared by: {report.preparedBy} · {report.date} · {report.pages} pages</p>
-                  <p className="text-sm text-slate-600">{report.summary}</p>
+                  <p className="text-xs text-muted-foreground mb-2">Prepared by: {report.preparedBy} · {report.date} · {report.pages} pages</p>
+                  <p className="text-sm text-muted-foreground">{report.summary}</p>
                 </div>
               </div>
               <div className="flex gap-2 flex-shrink-0">
-                <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-600 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
+                <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-muted-foreground border border-border rounded-lg hover:bg-background transition-colors">
                   <Eye className="w-3.5 h-3.5" /> View
                 </button>
-                <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-blue-600 border border-blue-200 rounded-lg hover:bg-blue-50 transition-colors">
+                <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-primary border border-blue-200 rounded-lg hover:bg-primary/10 transition-colors">
                   <Download className="w-3.5 h-3.5" /> Export
                 </button>
               </div>
