@@ -1,3 +1,4 @@
 - [x] Inspect the college portal repository and current app navigation.
 - [ ] Integrate its role-based screens and controls into the Zenith app menu.
 - [ ] Verify role switching, available menu items, and the preview build.
+- [ ] Add the Governing Body & Executive Management workspace from the shared Drive package.

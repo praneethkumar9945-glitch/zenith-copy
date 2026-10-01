@@ -18,6 +18,7 @@ import {
   LayoutGrid,
   TrendingUp,
   Landmark,
+  Scale,
 } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
@@ -66,6 +67,7 @@ const NAV: Item[] = [
   { to: "/workspace", label: "Workspace", icon: LayoutGrid },
   { to: "/hr", label: "HR", icon: Briefcase },
   { to: "/college", label: "College Portal", icon: Landmark },
+  { to: "/governance", label: "Governance", icon: Scale },
   { to: "/ai", label: "AI Analytics", icon: Sparkles, badge: "New" },
 ];
 
